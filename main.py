@@ -1,3 +1,3 @@
-from dectobin import *
+from tobin import *
 
-print(dec_to_bin("45"))
+print(instruct_to_bin("LESS"))
