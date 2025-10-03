@@ -1,3 +1,3 @@
 from tobin import *
 
-print(instruct_to_bin("LESS"))
+print(f"{instruct_to_bin("LESS")}_{dec_to_bin("100")}")
