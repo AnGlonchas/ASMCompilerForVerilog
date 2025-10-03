@@ -1,3 +1,12 @@
 from tobin import *
+from parser import *
 
-print(f"{instruct_to_bin("LESS")}_{dec_to_bin("100")}")
+print(f"{instructions["LESS"]}_{dec_to_bin("100")}")
+
+
+asm = "SUM   &0 2 2\nLESS &0 2 2"
+
+line = asm.splitlines()
+y = [word.split() for word in line]
+
+print(open_file("test.vasm"))
