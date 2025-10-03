@@ -1,3 +1,10 @@
 from tobin import *
+from parser import parse
 
-print(f"{instruct_to_bin("LESS")}_{dec_to_bin("100")}")
+def main():
+    parse("HELL PYTHON")
+
+
+if(__name__ == "__main__"):
+    main()
+

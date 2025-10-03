@@ -1,7 +1,12 @@
 from tobin import *
+def tokenize(program: str):
+   lines = program.splitlines()
+   return [line.split() for line in lines] 
+    
 
-def parse():
-	pass
+def parse(program: str):
+    tokens = tokenize(program)
+    print(tokens);
 
 """
 Model
