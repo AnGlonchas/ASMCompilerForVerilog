@@ -1,0 +1,3 @@
+##[pylyzer] failed /home/carlosnunezmx/CUCEI/ASMCompilerForVerilog/tobin.py 1759529136 726
+.instruct_to_bin: (instruction: Str) -> NoneType
+.dec_to_bin: (numstr: Str) -> Never

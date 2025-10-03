@@ -1,14 +1,17 @@
 from tobin import *
 
+def tokenize(program: str):
+   lines = program.splitlines()
+   return [line.split() for line in lines]
 
 def open_file(path: str):
     with open(path, "r") as file:
         content = file.read()
     return content
 
-
-def parse():
-	pass    
+def parse(program: str):
+    tokens = tokenize(program)
+    print(tokens)
 
 """
 Model

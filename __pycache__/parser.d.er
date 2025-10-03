@@ -1,0 +1,5 @@
+##[pylyzer] failed /home/carlosnunezmx/CUCEI/ASMCompilerForVerilog/parser.py 1759530665 218
+.DUMMY = pyimport "tobin"
+.tobin = pyimport "tobin"
+.parse: (program: Str) -> NoneType
+
