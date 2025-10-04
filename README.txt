@@ -1,13 +1,15 @@
 
-### Language Design: 
+Language Design: 
 
-#### Assembly extension: .vasm 
+    Assembly extension: .vasm 
+    Compiled bin extension: .vbin 
 
-#### Compiled bin extension: .vbin 
+Syntax Design:
 
-
-& -> register direction 
+& -> register directions
 # -> number literals 
+
+Assembly Example:
 
     NOP 
     ADD &save &num1 &num2 
