@@ -1,4 +1,3 @@
-from tobin import *
 from parser import *
 
 def main():

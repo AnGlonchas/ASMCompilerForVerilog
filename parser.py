@@ -16,6 +16,7 @@ Compiled bin extension: .vbin
 """
 
 from tobin import *
+from os import mkdir, path
 
 def tokenize(program: str):
    lines = program.splitlines()
@@ -29,15 +30,22 @@ def open_file(path: str):
 def parse(program: str):
     code = open_file(program)
     tokens = tokenize(code)
+
+    if not path.exists("./bin/"):
+        mkdir("./bin")
+
     with open("a.vbin", "w+") as file:
         for line in tokens:
+            if line:
+                if line[0][0] == "#": # Comment
+                    continue
 
-            if len(line) == 1:
-                file.write(f"{instructions[line[0]]}\n")
+                if len(line) == 1: # No arguments required (NOP)
+                    file.write(f"{instructions[line[0]]}\n")
 
-            else:
-                file.write(f"{instructions[line[0]]}_{dec_to_bin(line[1][1:])}_{dec_to_bin(line[2])}_{dec_to_bin(line[3])}\n")
+                else: # 3 Arguments required
+                    file.write(f"{instructions[line[0]]}_{dec_to_bin(line[1][1:])}_{dec_to_bin(line[2])}_{dec_to_bin(line[3])}\n")
 
-        #print(file.read())
+        print(file.read())
     #print(tokens)
 
