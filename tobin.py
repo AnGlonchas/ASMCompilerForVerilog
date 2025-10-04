@@ -1,13 +1,22 @@
 
+
+"""
+
+& -> registers
+# -> number literal
+
+"""
+
 instructions =  {
-    "NOP": "00000000",
-    "ADD": "00000001",
+
+    "NOP": "00000000", #No operations
+    "ADD": "00000001", #Add two numbers (&, #, #)
     "SUB": "00000010",
     "IF": "00000011",
     "MORE": "00000100",
     "LESS": "00000101",
     "ASSIGN": "00000110",
-    "ASSIGN": "00000110",
+    "TAG": "00000110",
 }
 
 def dec_to_bin(numstr: str):

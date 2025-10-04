@@ -1,8 +1,25 @@
+
+"""
+Language Design:
+
+Assembly extension: .vasm
+Compiled bin extension: .vbin
+
+    & -> register direction
+    # -> number literals
+
+    NOP
+    ADD &save &num1 &num2
+    SUB &save &num1 &num2
+    IF cond DOIF ... ENDIF
+
+"""
+
 from tobin import *
 
 def tokenize(program: str):
    lines = program.splitlines()
-   return [line.split() for line in lines]
+   return [word.split() for word in lines]
 
 def open_file(path: str):
     with open(path, "r") as file:
@@ -10,21 +27,17 @@ def open_file(path: str):
     return content
 
 def parse(program: str):
-    tokens = tokenize(program)
-    print(tokens)
+    code = open_file(program)
+    tokens = tokenize(code)
+    with open("a.vbin", "w+") as file:
+        for line in tokens:
 
-"""
-Model
+            if len(line) == 1:
+                file.write(f"{instructions[line[0]]}\n")
 
-Extension: .vasm
+            else:
+                file.write(f"{instructions[line[0]]}_{dec_to_bin(line[1][1:])}_{dec_to_bin(line[2])}_{dec_to_bin(line[3])}\n")
 
-sum 2 numbers
-    & = register
-    only numbers = temporal number
+        #print(file.read())
+    #print(tokens)
 
-    NOP
-    ADD &save &num1 &num2
-    SUB &save &num1 &num2
-    IF cond DO ... ENDIF
-
-"""
