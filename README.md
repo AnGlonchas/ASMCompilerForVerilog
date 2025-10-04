@@ -1,13 +1,15 @@
 
-Language Design:
+### Language Design: 
 
-Assembly extension: .vasm
-Compiled bin extension: .vbin
+#### Assembly extension: .vasm 
 
-    & -> register direction
-    # -> number literals
+#### Compiled bin extension: .vbin 
 
-    NOP
-    ADD &save &num1 &num2
-    SUB &save &num1 &num2
-    IF cond DOIF ... ENDIF
+
+& -> register direction 
+# -> number literals 
+
+> NOP 
+> ADD &save &num1 &num2 
+> SUB &save &num1 &num2 
+> IF cond DOIF ... ENDIF 
