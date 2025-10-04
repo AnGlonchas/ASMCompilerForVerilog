@@ -34,7 +34,7 @@ def parse(program: str):
     if not path.exists("./bin/"):
         mkdir("./bin")
 
-    with open("a.vbin", "w+") as file:
+    with open("./bin/a.vbin", "w+") as file:
         for line in tokens:
             if line:
                 if line[0][0] == "#": # Comment
