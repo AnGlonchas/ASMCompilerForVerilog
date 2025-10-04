@@ -1,20 +1,3 @@
-
-"""
-Language Design:
-
-Assembly extension: .vasm
-Compiled bin extension: .vbin
-
-    & -> register direction
-    # -> number literals
-
-    NOP
-    ADD &save &num1 &num2
-    SUB &save &num1 &num2
-    IF cond DOIF ... ENDIF
-
-"""
-
 from tobin import *
 from os import mkdir, path
 
@@ -41,7 +24,7 @@ def parse(program: str):
                     continue
 
                 if len(line) == 1: # No arguments required (NOP)
-                    file.write(f"{instructions[line[0]]}\n")
+                    file.write(f"{instructions[line[0]]}_{32*"0"}_{32*"0"}_{32*"0"}\n")
 
                 else: # 3 Arguments required
                     file.write(f"{instructions[line[0]]}_{dec_to_bin(line[1][1:])}_{dec_to_bin(line[2])}_{dec_to_bin(line[3])}\n")
