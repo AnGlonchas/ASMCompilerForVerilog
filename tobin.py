@@ -22,7 +22,7 @@ def dec_to_bin(numstr: str):
     num = int(numstr)
 
     if num == 0:
-        return 32*"0"
+        return 32 * "0"
     elif num == 1:
         return (31*"0")+"1"
     else:
@@ -33,3 +33,4 @@ def dec_to_bin(numstr: str):
             numbin = str(module) + numbin
         #Put the rest of the zeroes
         return (32-len(numbin))*"0" + numbin
+
