@@ -8,6 +8,5 @@ def main():
     except VASMCompilationError as err:
         err.print_error()
 
-
 if __name__ == "__main__":
     main()
