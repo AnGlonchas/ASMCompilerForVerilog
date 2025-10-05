@@ -1,3 +1,4 @@
+
 class VASMCompilationError(BaseException):
     def __init__(self, expected: str, line: int, name: str):
         self.expected = expected

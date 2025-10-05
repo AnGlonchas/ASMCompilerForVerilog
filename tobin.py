@@ -7,6 +7,8 @@
 
 """
 
+empty32 = 32*"0" # A string of 32 zeroes
+
 instructions =  {
     "NOP": "00000000", #No operations
     "ADD": "00000001", #Add two numbers (&, #, #)

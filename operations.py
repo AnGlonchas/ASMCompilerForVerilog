@@ -13,28 +13,23 @@ def NOP(
 def Math(
         op: str,
         line: int,
-        reg: str = "",
-        a: str = "",
-        b: str = ""
-) -> str:
-    if (reg[0] != "&"):
+        arg1: str = "",
+        arg2: str = "",
+        arg3: str = ""
+        ) -> str:
+
+    if arg1[0] != "&" or arg2[0] != "&" or arg3[0] != "&":
         raise VASMCompilationError(
             name="EXPECTED_REG_ERR",
             line=line,
-            expected="Se esperaba un registro como argumento de la función"
+            expected="Expected a register as an argument."
         )
-    if (reg[1:] == ""):
+
+    if not (arg1 or arg2 or arg3):
         raise VASMCompilationError(
             name="INVALID_REG_ERR",
             line=line,
-            expected="Se esperaba el identificador del registro"
+            expected="Expected a register identificator."
         )
 
-    if (a == "" or b == ""):
-        raise VASMCompilationError(
-            name="EXPECTED_VALUE_ERR",
-            line=line,
-            expected="A value was expected."
-        )
-
-    return f"{instructions[op]}_{dec_to_bin(reg[1:])}_{dec_to_bin(a)}_{dec_to_bin(b)}\n"
+    return f"{instructions[op]}_{dec_to_bin(arg1[1:])}_{dec_to_bin(arg2[1:])}_{dec_to_bin(arg3[1:])}\n"
