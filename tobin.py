@@ -9,6 +9,13 @@
 
 empty32 = 32*"0" # A string of 32 zeroes
 
+class Instruction:
+    def __init__(self, instruction: str, bin: str, instr_type):
+        self.instruction = instruction
+        self.bin = bin
+        self.instr_type = instr_type
+
+
 instructions =  {
     "NOP": "00000000", #No operations
     "ADD": "00000001", #Add two numbers (&, #, #)
@@ -17,14 +24,13 @@ instructions =  {
     "MORE": "00000100",
     "LESS": "00000101",
     "ASSIGN": "00000110",
-    "TAG": "00000110",
+    "TAG": "00000110"
 }
 
 def dec_to_bin(numstr: str):
     num = int(numstr)
-
     if num == 0:
-        return 32 * "0"
+        return empty32
     elif num == 1:
         return (31*"0")+"1"
     else:
@@ -35,4 +41,3 @@ def dec_to_bin(numstr: str):
             numbin = str(module) + numbin
         #Put the rest of the zeroes
         return (32-len(numbin))*"0" + numbin
-

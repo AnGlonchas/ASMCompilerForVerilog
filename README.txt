@@ -7,7 +7,7 @@ Language Design:
 Syntax Design:
 
 & -> register directions
-# -> number literals 
+number literals -> number literals 
 
 What instructions are available?:
 

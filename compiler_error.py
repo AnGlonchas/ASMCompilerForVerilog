@@ -7,6 +7,6 @@ class VASMCompilationError(BaseException):
         super().__init__()
 
     def print_error(self):
-        print("[VASM Compiler]")
+        print("[VASM Compiler for vCoreZero]")
         print(f"--> Compilation error ({self.name}):")
         print(f"On line: {self.line} - {self.expected}")

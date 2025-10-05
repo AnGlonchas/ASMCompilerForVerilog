@@ -1,0 +1,3 @@
+
+
+BIN_PATH = "./vbin/"

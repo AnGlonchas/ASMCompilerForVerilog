@@ -10,25 +10,25 @@ z2
 cModel Technology
 d/home/anglonchas
 valu
-Z0 !s110 1759620433
+Z0 !s110 1759681173
 !i10b 1
 !s100 HiTUcEK;g@SK3P@m8cCV41
 Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
-IdK^j7>f;Rd7eo5ER<zmgT0
+IG7S5AfJP@boONfnJ]^JeJ0
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 Z3 d/home/anglonchas/Programming/Python/AsmModelsim/verilog
-Z4 w1759620425
-Z5 8/home/anglonchas/Programming/Python/AsmModelsim/verilog/vcore0.v
-Z6 F/home/anglonchas/Programming/Python/AsmModelsim/verilog/vcore0.v
-!i122 0
+Z4 w1759681089
+Z5 8/home/anglonchas/Programming/Python/AsmModelsim/verilog/vcorezero.v
+Z6 F/home/anglonchas/Programming/Python/AsmModelsim/verilog/vcorezero.v
+!i122 1
 L0 3 3
 Z7 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z8 !s108 1759620433.000000
-!s107 /home/anglonchas/Programming/Python/AsmModelsim/verilog/vcore0.v|
-Z9 !s90 -reportprogress|300|-work|work|-stats=none|/home/anglonchas/Programming/Python/AsmModelsim/verilog/vcore0.v|
+Z8 !s108 1759681173.000000
+!s107 /home/anglonchas/Programming/Python/AsmModelsim/verilog/vcorezero.v|
+Z9 !s90 -reportprogress|300|-work|work|-stats=none|/home/anglonchas/Programming/Python/AsmModelsim/verilog/vcorezero.v|
 !i113 1
 Z10 o-work work
 Z11 tCvgOpt 0
@@ -37,20 +37,20 @@ R0
 !i10b 1
 !s100 830Lb79?^0lmQU`MRVRFP3
 R1
-IQN0Pc@a:E[8ATZ^gWm8;50
+I56RIDKS1^427>@hUn`TOE2
 R2
 R3
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 11 3
 R7
 r1
 !s85 0
 31
 R8
-Z12 !s107 /home/anglonchas/Programming/Python/AsmModelsim/verilog/vcore0.v|
+Z12 !s107 /home/anglonchas/Programming/Python/AsmModelsim/verilog/vcorezero.v|
 R9
 !i113 1
 R10
@@ -61,13 +61,13 @@ R0
 !i10b 1
 !s100 MCX565@fc8kX?ld^a8WLd2
 R1
-Il6d=KS>`^J8U2k4TWB=LX0
+IkSkW=zLd2RB_3LjiCF48D2
 R2
 R3
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 7 3
 R7
 r1
@@ -85,13 +85,13 @@ R0
 !i10b 1
 !s100 Uo=b_5HCZHLgoi3NBG`nb3
 R1
-I;n<BzcLUz:254E;L7aDdU3
+IhaU3AX8OGG07NDec`KaLD2
 R2
 R3
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 15 3
 R7
 r1
@@ -109,13 +109,13 @@ R0
 !i10b 1
 !s100 Ag4]iOPM^f?b5_gGmHNzc0
 R1
-I=8;TYDI>l2YM4Uoe]3;=22
+IL;gYF34CDjMKKWPbYRM>z2
 R2
 R3
 R4
 R5
 R6
-!i122 0
+!i122 1
 L0 19 3
 R7
 r1
