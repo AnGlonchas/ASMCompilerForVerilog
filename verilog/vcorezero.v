@@ -16,6 +16,6 @@ module registerBank();
 
 endmodule
 
-module vCore0();
+module vCoreZero();
 
 endmodule

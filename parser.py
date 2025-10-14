@@ -1,22 +1,7 @@
 from compiler_error import VASMCompilationError
-from tobin import empty32
+from tobin import empty32, Instruction
 from os import mkdir, path
-from core import BIN_PATH
-from operations import *
-
-def open_file(path: str):
-    with open(path, "r") as file: # Reads the file
-        return file.read()
-
-def tokenize(program: str):
-   lines = program.splitlines() # Split the file into lines
-   return [word.split() for word in lines]  # Split the line into words or tokens
-
-instruction_fns = {
-    "NOP": NOP,
-    "ADD": Math,
-    "SUB": Math
-}
+from core import *
 
 def parse(program: str):
 
@@ -41,14 +26,14 @@ def parse(program: str):
 
             operation = line[0]
             args = line[1:]
+            instruction = Instruction(operation, args, i)
+            bin_line = instruction.convert()
 
-            if not instruction_fns[operation]: # Checks if the instruction exist
+            if not bin_line:
                 raise VASMCompilationError(
                     name="INVALID_INSTRUCTION",
                     expected=f"Invalid {operation} not found.",
                     line=i
                 )
 
-
-            binary_line = instruction_fns[operation](operation, i, *args)
-            file.write(binary_line)
+            file.write(bin_line)
