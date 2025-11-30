@@ -1,7 +1,7 @@
 
 BIN_PATH = "./vbin/"
 
-def open_file(path: str):
+def open_file(path: str) -> str:
     with open(path, "r") as file: # Reads the file
         return file.read()
 

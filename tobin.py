@@ -8,66 +8,94 @@ from compiler_error import VASMCompilationError
 """
 BINARY = 0
 FUNCTION = 1
+SPECIAL = 2
 
-empty32 = 32*"0" # A string of 32 zeroes
+def empty(wordlength: int = 32):
+    return wordlength*"0"
 
-def tobin(numstr: str):
+def tobin(numstr: str, wordlength: int = 32):
+    try:
         num = int(numstr)
-        if num == 0:
-            return empty32
-        elif num == 1:
-            return (31*"0")+"1"
-        else:
-            numbin = ""
-            while num > 0:
-                module = num % 2
-                num = num // 2
-                numbin = str(module) + numbin
-            #Put the rest of the zeroes
-            return (32-len(numbin))*"0" + numbin
+        res = format(num, f"0{wordlength}b")
+        return res
+
+    except VASMCompilationError:
+        VASMCompilationError(
+            name="INVALID_NUMBER_LITERAL",
+            expected=f"",
+            linecontent="",
+            line=""
+        )
 
 class Instruction:
     def __init__(self, opcode: str, args: list[str], line: int):
         self.opcode = opcode
 
-        if not args:
-            pass
-        else:
-            self.arg1, self.arg2, self.arg3 = [*args]
+        if not args: pass
+        if len(args) == 1: self.arg1 = args[0]
+        if len(args) == 2: self.arg1, self.arg2 = args
+        if len(args) == 3: self.arg1, self.arg2, self.arg3 = args
 
         self.line = line
         self.instructions =  {
-            "NOP":  ("00000000", self.NOP), #No operations
-            "ADD":  ("00000001", self.Math), #Add two numbers (&, #, #)
-            "SUB":  ("00000010", self.Math),
-            "IF":   ("00000011", self.Math),
-            "MORE": ("00000100", self.Math),
-            "LESS": ("00000101", self.Math),
-            "ADDI": ("00000110", self.iMath),
-            "TAG":  ("00000110", self.Math)
+            # R type syntax (&, &, &)
+            "ADD":  ("000000", self.Math, "100000"),
+            "SUB":  ("000000", self.Math, "100010"),
+            "AND":  ("000000", self.Math, "100100"),
+            "OR":   ("000000", self.Math, "100101"),
+            "SLT":  ("000000", self.Math, "101010"),
+            # I type syntax (&, &, #)
+            "ADDI": ("001000", self.iMath),
+            "ANDI": ("001100", self.iMath),
+            "ORI":  ("001101", self.iMath),
+            "XORI": ("001110", self.iMath),
+            "SLTI": ("001010", self.iMath),
+            "BEQ":  ("000100", self.iMath),
+            "LW":   ("100011", self.iMath),
+            "SW":   ("101011", self.iMath),
+            # J type syntax (#)
+            "J":    ("000010", self.Jump),
         }
+
         self.bin_opcode = self.instructions[self.opcode][BINARY]
         self.bin_line = self.instructions[self.opcode][FUNCTION]()
+
+    def Jump(self) -> str:
+        if self.arg1[0] != "#":
+            raise VASMCompilationError(
+                name="EXPECTED_REG_ERR",
+                line=self.line,
+                expected="Expected an immediate number as an argument (#)."
+            )
+
+        return f"{self.bin_opcode}_{tobin(self.arg1[1:], 26)}\n"
 
     def iMath(self) -> str:
         if self.arg1[0] != "&" or self.arg2[0] != "&":
             raise VASMCompilationError(
                 name="EXPECTED_REG_ERR",
-                line=line,
+                line=self.line,
                 expected="Expected a register as an argument."
+            )
+        if self.arg3[0] != "#":
+            raise VASMCompilationError(
+                name="EXPECTED_REG_ERR",
+                line=self.line,
+                expected="Expected an immediate number as an argument."
             )
 
         if not (self.arg1 or self.arg2 or self.arg3):
             raise VASMCompilationError(
                 name="INVALID_REG_ERR",
-                line=line,
-                expected="Expected 3 arguments."
+                line=self.line,
+                expected="Expected 3 arguments (&, &, #)."
             )
+        return f"{self.bin_opcode}_{tobin(self.arg2[1:], 5)}_{tobin(self.arg1[1:], 5)}_{tobin(self.arg3[1:], 16)}\n"
 
-        return f"{self.bin_opcode}_{tobin(self.arg1[1:])}_{tobin(self.arg2[1:])}_{tobin(self.arg3)}\n"
 
 
     def Math(self) -> str:
+        self.special = self.instructions[self.opcode][SPECIAL]
 
         if self.arg1[0] != "&" or self.arg2[0] != "&" or self.arg3[0] != "&":
             raise VASMCompilationError(
@@ -80,13 +108,10 @@ class Instruction:
             raise VASMCompilationError(
                 name="INVALID_REG_ERR",
                 line=line,
-                expected="Expected a register identificator."
+                expected="Expected 3 arguments (&, &, &)."
             )
 
-        return f"{self.bin_opcode}_{tobin(self.arg1[1:])}_{tobin(self.arg2[1:])}_{tobin(self.arg3[1:])}\n"
-
-    def NOP(self) -> str:
-        return f"{self.bin_opcode}_{empty32}_{empty32}_{empty32}\n"
+        return f"{self.bin_opcode}_{tobin(self.arg3[1:], 5)}_{tobin(self.arg1[1:], 5)}_{tobin(self.arg2[1:], 5)}_{empty(5)}_{self.special}\n"
 
     def convert(self) -> str:
         return self.bin_line

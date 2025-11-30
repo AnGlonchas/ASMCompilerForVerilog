@@ -1,10 +1,10 @@
 from parser import parse
 from compiler_error import VASMCompilationError
-
+from sys import argv
 
 def main():
     try:
-        parse("./test.vasm")
+        parse(argv[1])
     
     except VASMCompilationError as err:
         err.print_error()

@@ -1,16 +1,1 @@
-/home/anglonchas/Programming/Python/AsmModelsim/verilog/vcorezero.v {1 {vlog -work work -stats=none /home/anglonchas/Programming/Python/AsmModelsim/verilog/vcorezero.v
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module alu
--- Compiling module ramS
--- Compiling module instructionRam
--- Compiling module registerBank
--- Compiling module vCore0
 
-Top level modules:
-	alu
-	ramS
-	instructionRam
-	registerBank
-	vCore0
-
-} {} {}}
